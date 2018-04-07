@@ -93,10 +93,10 @@ index_with_subtitle: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: / || home
-  #about: /about/ || user
   #tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
+  about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -112,8 +112,8 @@ menu_icons:
 
 # Schemes
 # scheme: Muse
-scheme: Mist
-#scheme: Pisces
+# scheme: Mist
+scheme: Pisces
 #scheme: Gemini
 
 
@@ -126,8 +126,8 @@ scheme: Mist
 # Key is the link label showing to end users.
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
-#social:
-  #GitHub: https://github.com/yourname || github
+social:
+  GitHub: https://github.com/chuheridangwu || github
   #E-Mail: mailto:yourname@gmail.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -142,6 +142,7 @@ social_icons:
   enable: true
   icons_only: false
   transition: false
+  GitHub: github
 
 # Blog rolls
 links_icon: link
@@ -155,6 +156,7 @@ links_layout: block
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
 #avatar: /images/avatar.gif
+avatar: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg
 
 # Table Of Contents in the Sidebar
 toc:
@@ -175,7 +177,7 @@ toc:
 sidebar:
   # Sidebar Position, available value: left | right (only for Pisces | Gemini).
   position: left
-  #position: right
+  # position: right
 
   # Sidebar Display, available value (only for Muse | Mist):
   #  - post    expand on posts automatically. Default.
@@ -236,15 +238,16 @@ post_wordcount:
   separated_meta: true
 
 # Wechat Subscriber
-#wechat_subscriber:
-  #enabled: true
-  #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
-  #description: ex. subscribe to my blog by scanning my public wechat account
+wechat_subscriber:
+  enabled: true
+  # qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
+  qcode: /images/wechat-qcode.jpg
+  description: 扫一扫，订阅我的公众号
 
 # Reward
-#reward_comment: Donate comment here
-#wechatpay: /images/wechatpay.jpg
-#alipay: /images/alipay.jpg
+reward_comment: 回收二手人名币，量大从优
+wechatpay: /images/wechatpay.jpg
+alipay: /images/alipay.jpg
 #bitcoin: /images/bitcoin.png
 
 # Declare license on posts
@@ -277,7 +280,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # ---------------------------------------------------------------
@@ -350,10 +353,10 @@ mathjax:
 han: false
 
 # Swiftype Search API Key
-#swiftype_key:
+swiftype_key: vnnud4MVyky-7R4uMuSx
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 0f01735046df1237d7f5388094b3a5bf
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -406,7 +409,7 @@ gitment:
   count: true # Show comments count in post meta area
   lazy: false # Comments lazy loading with a button
   cleanly: false # Hide 'Powered by ...' on footer, and more
-  language: # Force language, or auto switch by theme
+  language: zh-Hans# Force language, or auto switch by theme
   github_user: # MUST HAVE, Your Github ID
   github_repo: # MUST HAVE, The repo you use to store Gitment comments
   client_id: # MUST HAVE, Github client id for the Gitment
@@ -593,7 +596,7 @@ calendar:
 
 # Algolia Search
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 10
   labels:

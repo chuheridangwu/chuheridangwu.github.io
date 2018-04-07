@@ -5,11 +5,19 @@
 # Site
 title: 奔跑的小卖铺
 subtitle: 我们不能停，所以只能奔跑
-description: ios
+description: 一枚正在学习Android的iOS开发者
 keywords:
-author: John Doe
-language:
+author: 小白
+language: zh-Hans
 timezone:
+
+# Algolia 搜索
+algolia:
+  applicationID: 'GRK4YIMS5T'
+  apiKey: 'bef014ba7a9af458bd4e3e1367c30259'
+  adminApiKey: '2681cd20fa2ce45f4cc46b8ed589d590'
+  indexName: 'github'
+  chunkSize: 5000
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
