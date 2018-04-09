@@ -18,10 +18,21 @@ algolia:
   adminApiKey: '2681cd20fa2ce45f4cc46b8ed589d590'
   indexName: 'github'
   chunkSize: 5000
+  fields:
+    - title
+    - tags
+    - slug
+    - excerpt
+    - excerpt:strip
+    - path
+    - photos
+    - gallery
+    - content:strip
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://chuheridangwu.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
