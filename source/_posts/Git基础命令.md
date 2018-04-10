@@ -15,13 +15,12 @@ git commit -m“第一次提交”    //提交到本地 ""里为描述
 git remote add origin https://github.com/chuheridangwu/new.git  //添加远程仓库地址
 git push -u origin master   //推送到远程仓库 master:分支名称master一般为主分支
 ```
- 
 ### 查看版本及回退
 Git保存的是每一次的修改记录
 `git add`:将当前修改添加到暂存区，
 `git commit`:将暂存区的所有内容提交到当前分支
 
-
+<!---more--->
 
 ```
 git status  //查看当前状态
@@ -43,7 +42,17 @@ git branch          //查看当前分支
 git branch -d dev   //删除dev分支
 git merge dev       //将dev分支跟主分支进行合并
 ```
->当分支合并发生冲突时，使用`git status`可以告诉我们冲突的文件，Git的用<<<<<<<，=======，>>>>>>>标记出不同分支的内容，我们需要修改后重新合并
+>当分支合并发生冲突时，使用`git status`可以告诉我们冲突的文件，Git的用`<<<<<<<，=======，>>>>>>>`标记出不同分支的内容，我们需要修改后重新合并
+
+### 文件管理
+```
+git mv a.text b.text //更改文件名称 a.text: 原来的文件名 b.text: 更改的文件名
+git mv a.text mydir //移动a.text文件到 mydir文件夹 mydir: 文件夹名称
+git rm a.text       //移除文件，将文件提交到分支后需要这样删除
+git rm -r mydir     //删除文件夹, mydir:文件名称
+rm a.text           //移除本地文件
+```
+>做任何文件操作时，需要先cd到相对应的目录，然后再执行命令，不然会找不到文件
 
 ### 标签管理
 ```
@@ -65,6 +74,7 @@ vim .gitignore      //编辑，直接将上面配置好的忽略文件copy过来
 ```
 
 ### 参考网站
-**[廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)** 如果想全面了解Git，强烈推荐去看一下廖老师的教程
+**[廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)** *如果想全面了解Git，强烈推荐去看一下廖老师的教程*
 
+**[易百Git教程](https://www.yiibai.com/git/)**
 
