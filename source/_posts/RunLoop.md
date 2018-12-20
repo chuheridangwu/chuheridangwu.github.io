@@ -11,6 +11,7 @@ RunLoop可以通过NSRunLoop和CFRunLoopRef来访问
 * RunLoop只能选择一种Mode启动，如果当前Mode中不包含Source(Source0、Source1)或者Timer，会直接退出RunLoop
 * NSRunLoop是CFRunLoopRef基于OC的一层包装，如果要了解RunLoop内部结构，需要研究CFRunLoopRef层面的Api
 <!-- more-->
+
 ## RunLoop跟线程的关系
 * 每一个线程都有一个RunLoop对象
 * 主线程的RunLoop对象已经创建好了，子线程的需要自己创建
@@ -28,7 +29,7 @@ NSRunLoop类
 * kCFRunLoopDefaultMode: App的默认Mode,通常主线程是在这个Mode下运行
 * UITrackingRunLoopMode: 界面追踪Mode,用于ScrollView追踪触摸滑动，保证界面滑动时不受其他Mode影响
 * kCFRunLoopCommonModes: 是苹果占位用的Mode,并不是一个真正的Mode，kCFRunLoopCommonModes包含以下mode类型,可以通过打印查看
-![NSRunLoopCommonModes](/images/Runloop_2.png)
+![](/images/RunLoop_2.png)
 
 * GSEventReceiveRunLoopMode: 接受系统事件的内部Mode
 * UIInitializationRunLoopMode：刚启动App时进入的第一个Mode
@@ -164,7 +165,7 @@ CF_EXPORT CFRunLoopRef _CFRunLoopGet0(pthread_t t) {
 ### 在对应的Mode实现相应的功能
 举个栗子：比如想在视图滚动的时候做一些事情,可以使用UITrackingRunLoopMode来做些事情
 ```
-[_imgView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"RunLoop_0.png"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+[_imgView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"RunLoop_0.png"] afterDelay:0 inModes:@[UITrackingRunLoopMode]];
 ```
 
 ### RunLoop开启一个常驻异步线程
@@ -227,7 +228,16 @@ CF_EXPORT CFRunLoopRef _CFRunLoopGet0(pthread_t t) {
 ####  dispatch_semaphore_t相关信息 
 [浅谈dispatch_semaphore_t](https://www.jianshu.com/p/c815ad360a2a)
 
+```
+// 创建信号
+dispatch_semaphore_t dispatch_semaphore_create(long value);
+// 等待资源释放，如果传入的dsema大于0，就继续向下执行，并将信号量减1；如果dsema等于0，则等待超时才会继续向下执行。
+long dispatch_semaphore_wait(dispatch_semaphore_t dsema, dispatch_time_t timeout);
+// 发送信号
+long dispatch_semaphore_signal(dispatch_semaphore_t dsema);
+```
 
 ## RunLoop相关文档
 [RunLoop的官方文档](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1)
 [CFRunLoopRef开源文档  CF框架](https://opensource.apple.com/release/os-x-10105.html)
+[深入理解RunLoop](https://blog.ibireme.com/2015/05/18/runloop/)
