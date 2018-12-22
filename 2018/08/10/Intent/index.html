@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Intent,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
+<meta name="keywords" content="Intent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intent">
+<meta property="og:url" content="/2018/08/10/Intent/index.html">
+<meta property="og:site_name" content="奔跑的小卖铺">
+<meta property="og:description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://developer.android.com/images/components/intent-filters@2x.png">
+<meta property="og:updated_time" content="2018-12-22T06:10:25.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intent">
+<meta name="twitter:description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
+<meta name="twitter:image" content="https://developer.android.com/images/components/intent-filters@2x.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'GRK4YIMS5T',
+      apiKey: 'bef014ba7a9af458bd4e3e1367c30259',
+      indexName: 'github',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索内容","hits_empty":"没有找到关于: ${query} 的文章","hits_stats":"共找到${hits} 结果， 花费 ${time} 秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2018/08/10/Intent/">
+
+
+
+
+
+  <title>Intent | 奔跑的小卖铺</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0f01735046df1237d7f5388094b3a5bf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">奔跑的小卖铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我们不能停，所以只能奔跑</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2018/08/10/Intent/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小白">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奔跑的小卖铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Intent</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T10:10:54+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：</p>
+<ul>
+<li><strong>启动Activity :</strong><br>  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。</li>
+</ul>
+<p>如果希望在 Activity 完成后收到结果，请调用 startActivityForResult()。在上个 Activity 的 onActivityResult() 回调中，Intent会在这个方法中传递过来。</p>
+<ul>
+<li><strong>启动服务 :</strong><br>  Service 是一个不使用用户界面而在后台执行操作的组件。通过将 Intent 传递给 startService()，您可以启动服务执行一次性操作（例如，下载文件）。Intent 描述了要启动的服务，并携带了任何必要的数据。</li>
+</ul>
+<p>如果服务旨在使用客户端-服务器接口，则通过将 Intent 传递给 bindService()，您可以从其他组件绑定到此服务</p>
+<ul>
+<li><strong>传递广播 :</strong><br>  广播是任何应用均可接收的消息。系统将针对系统事件（例如：系统启动或设备开始充电时）传递各种广播。通过将 Intent 传递给 sendBroadcast()、sendOrderedBroadcast() 或 sendStickyBroadcast()，您可以将广播传递给其他应用。   <a id="more"></a>
+<h2 id="显式Intent"><a href="#显式Intent" class="headerlink" title="显式Intent"></a>显式Intent</h2>按名称（限定类名）指定要启动的组件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startActivity(new Intent(MainActivity.this,SendActivity.class));</span><br></pre></td></tr></table></figure>
+<h2 id="隐式Intent"><a href="#隐式Intent" class="headerlink" title="隐式Intent"></a>隐式Intent</h2><p>创建隐式Intent时，系统会通过Intent的内容与设备上其他应用的<a href="https://developer.android.com/guide/topics/manifest/manifest-intro" target="_blank" rel="noopener">清单文件</a>中声明的Intent过滤器进行比较，从而找到相应的组件。如果Intent 与 Intent过滤器匹配，系统将启动该组件，并向其传递Intent对象。<br>如果有多个Intent过滤器兼容，系统会显示一个对话框，支持用户选择要使用的应用。<br>如果没有为Activity声明任何Intent过滤器，Activity只能通过显式intent启动<br><code>AndroidManifest.xml</code>文件就是清单文件</p>
+<h3 id="发送隐式Intent"><a href="#发送隐式Intent" class="headerlink" title="发送隐式Intent"></a>发送隐式Intent</h3><p>通过隐式Intent调用 <code>&lt;aciton&gt;</code> 格式为<code>com.test.android.intent.action.Sendactivity</code>的Activity,<strong>如果没有应用可以处理隐式Inetnt，应用会崩溃，所以调用前需要使用<code>resolveActivity()</code>方法验证手机是否有程序可以处理该Intent</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent(&quot;com.test.android.intent.action.Sendactivity&quot;);</span><br><span class="line">           if (intent.resolveActivity(getPackageManager()) != null)&#123;</span><br><span class="line">                   startActivity(intent);</span><br><span class="line">               &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="接收隐式Intent"><a href="#接收隐式Intent" class="headerlink" title="接收隐式Intent"></a>接收隐式Intent</h3><p>为了接收隐式Intent，必须在Intent过滤器中将一个<code>&lt;category&gt;</code>标签设置为<code>DEFAULT</code>类别，这样方法<code>startActivity()</code>和<code>startActivityForResult()</code>才会按照已申明的类别方式处理所有的Intent,<strong>如果未在Intent过滤器中声明此类别<code>DEFAULT</code>，则隐式Intent不会解析。</strong><br><code>&lt;action&gt;</code>标签格式一般为：包名.intent.action.类名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.SendActivity&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;com.test.android.intent.action.Sendactivity&quot;&gt;&lt;/action&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Intent过滤器-IntentFilter"><a href="#Intent过滤器-IntentFilter" class="headerlink" title="Intent过滤器 - IntentFilter"></a>Intent过滤器 - IntentFilter</h3><p> intent 过滤器在清单中被指定为 <intent-filter> 元素。一个组件可有任意数量的过滤器，其中每个过滤器描述一种不同的功能。<code>category</code>和<code>action</code>标签可以有多个<br> intent过滤器可以直接在<code>AndroidManifest.xml</code>文件中添加，也可以直接使用<strong>IntentFilter</strong>进行创建，文件中添加为静态，使用<strong>IntentFilter</strong>动态创建更加灵活</intent-filter></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">    &lt;action android:name=&quot;com.example.dym.locholandroid.intent.action.Sendaction&quot;&gt;&lt;/action&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
+<p>如果有多个应用都可以接收隐式Intent,会出现选项框让你选择要调用的应用。有两个选择，仅此一次或者永远。<br>选择仅此一次，下次点击按钮的时候弹窗还会出现，<br>选择永远，下次点击按钮直接调用，如果想可以重新选择，需要进入设置，清除<strong>选择应用</strong>的默认设置</p>
+<h3 id="通过URL打开app"><a href="#通过URL打开app" class="headerlink" title="通过URL打开app"></a>通过URL打开app</h3><p>需要在网页中植入一个点击链接，对应下面 <code>&lt;data&gt;</code>标签的<strong>scheme</strong>内容<code>&lt;a href=&quot;app://&quot;&gt;启动应用程序&lt;/a&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.SendActivity&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;&gt;&lt;/category&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.VIEW&quot;&gt;&lt;/action&gt;</span><br><span class="line">        &lt;data android:scheme=&quot;app&quot;&gt;&lt;/data&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p><code>android.intent.category.BROWSABLE</code>: 可以被浏览器启动</p>
+<h3 id="隐式Intent的使用技巧"><a href="#隐式Intent的使用技巧" class="headerlink" title="隐式Intent的使用技巧"></a>隐式Intent的使用技巧</h3><p>可以直接通过隐式Intent调用其他app的活动<br>如果Activity只允许在当前程序内部才可以访问，需要对Activity配置<code>android:exported=&quot;false&quot;</code>，这样其他程序就无法调用当前活动了</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
+<p>为了确保应用的安全性，启动 Service 时，请始终使用显式 Intent，且不要为服务声明 Intent 过滤器。使用隐式 Intent 启动服务存在安全隐患，因为您无法确定哪些服务将响应 Intent，且用户无法看到哪些服务已启动。从 Android 5.0（API 级别 21）开始，如果使用隐式 Intent 调用 bindService()，系统会引发异常。</p>
+</blockquote>
+<h2 id="隐式-Intent-如何通过系统传递以启动其他-Activity-的"><a href="#隐式-Intent-如何通过系统传递以启动其他-Activity-的" class="headerlink" title="隐式 Intent 如何通过系统传递以启动其他 Activity 的"></a>隐式 Intent 如何通过系统传递以启动其他 Activity 的</h2><p><img src="https://developer.android.com/images/components/intent-filters@2x.png" alt=""><br>图解：<br>[1] Activity A 创建包含操作描述的 Intent，并将其传递给 startActivity()。<br>[2] Android 系统搜索所有应用中与 Intent 匹配的 Intent 过滤器。 找到匹配项之后。<br>[3] 该系统通过调用匹配 Activity（Activity B）的 onCreate() 方法并将其传递给 Intent，以此启动匹配 Activity。</p>
+<h2 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h2><p><a href="https://developer.android.com/guide/components/intents-filters" target="_blank" rel="noopener">谷歌Intent文档</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="小白 wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫，订阅我的公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>回收二手人名币，量大从优</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="小白 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="小白 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Intent/" rel="tag"># Intent</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/Activity/" rel="next" title="Activity">
+                <i class="fa fa-chevron-left"></i> Activity
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/21/广播接收器/" rel="prev" title="广播接收器">
+                广播接收器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg" alt="小白">
+            
+              <p class="site-author-name" itemprop="name">小白</p>
+              <p class="site-description motion-element" itemprop="description">一枚正在学习Android的iOS开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chuheridangwu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#显式Intent"><span class="nav-number">1.</span> <span class="nav-text">显式Intent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式Intent"><span class="nav-number">2.</span> <span class="nav-text">隐式Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发送隐式Intent"><span class="nav-number">2.1.</span> <span class="nav-text">发送隐式Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收隐式Intent"><span class="nav-number">2.2.</span> <span class="nav-text">接收隐式Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent过滤器-IntentFilter"><span class="nav-number">2.3.</span> <span class="nav-text">Intent过滤器 - IntentFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过URL打开app"><span class="nav-number">2.4.</span> <span class="nav-text">通过URL打开app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式Intent的使用技巧"><span class="nav-number">2.5.</span> <span class="nav-text">隐式Intent的使用技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">2.6.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式-Intent-如何通过系统传递以启动其他-Activity-的"><span class="nav-number">3.</span> <span class="nav-text">隐式 Intent 如何通过系统传递以启动其他 Activity 的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考网址"><span class="nav-number">4.</span> <span class="nav-text">参考网址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!-- END LOCAL -->
+
+    
+      <script type="text/javascript">
+      function renderGitalk(){
+        var gitalk = new Gitalk({
+            owner: 'chuheridangwu',
+            repo: 'chuheridangwu.github.io',
+            clientID: '7ebc0fec98baf04c92e3',
+            clientSecret: '193bb08037ffca32e004427b7719a3f4523280eb',
+            admin: 'chuhe ',
+            
+              distractionFreeMode: 'true'
+            
+            });
+        gitalk.render('gitalk-container');
+      }
+      renderGitalk();
+      </script>
+    
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

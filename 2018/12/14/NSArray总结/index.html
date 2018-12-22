@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NSArray,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数组是我们非常常用的一个类，里面有一些方法不经常用到，又往往需要查询，现在把不经常用到的一些方法做一个总结。省的以后到处找！ 不常用的方法- componentsJoinedByString:构造并返回一个NSString对象，该对象是在数组元素之间插入给定分隔符的结果。123NSArray *array = @[@&amp;quot;a&amp;quot;,@&amp;quot;b&amp;quot;,@&amp;quot;c&amp;quo">
+<meta name="keywords" content="NSArray">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSArray总结">
+<meta property="og:url" content="/2018/12/14/NSArray总结/index.html">
+<meta property="og:site_name" content="奔跑的小卖铺">
+<meta property="og:description" content="数组是我们非常常用的一个类，里面有一些方法不经常用到，又往往需要查询，现在把不经常用到的一些方法做一个总结。省的以后到处找！ 不常用的方法- componentsJoinedByString:构造并返回一个NSString对象，该对象是在数组元素之间插入给定分隔符的结果。123NSArray *array = @[@&amp;quot;a&amp;quot;,@&amp;quot;b&amp;quot;,@&amp;quot;c&amp;quo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-22T06:10:25.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NSArray总结">
+<meta name="twitter:description" content="数组是我们非常常用的一个类，里面有一些方法不经常用到，又往往需要查询，现在把不经常用到的一些方法做一个总结。省的以后到处找！ 不常用的方法- componentsJoinedByString:构造并返回一个NSString对象，该对象是在数组元素之间插入给定分隔符的结果。123NSArray *array = @[@&amp;quot;a&amp;quot;,@&amp;quot;b&amp;quot;,@&amp;quot;c&amp;quo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'GRK4YIMS5T',
+      apiKey: 'bef014ba7a9af458bd4e3e1367c30259',
+      indexName: 'github',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索内容","hits_empty":"没有找到关于: ${query} 的文章","hits_stats":"共找到${hits} 结果， 花费 ${time} 秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2018/12/14/NSArray总结/">
+
+
+
+
+
+  <title>NSArray总结 | 奔跑的小卖铺</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0f01735046df1237d7f5388094b3a5bf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">奔跑的小卖铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我们不能停，所以只能奔跑</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2018/12/14/NSArray总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小白">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奔跑的小卖铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NSArray总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T15:02:41+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>数组是我们非常常用的一个类，里面有一些方法不经常用到，又往往需要查询，现在把不经常用到的一些方法做一个总结。省的以后到处找！</p>
+<h2 id="不常用的方法"><a href="#不常用的方法" class="headerlink" title="不常用的方法"></a>不常用的方法</h2><p><code>-</code> componentsJoinedByString:<br>构造并返回一个NSString对象，该对象是在数组元素之间插入给定分隔符的结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[@&quot;a&quot;,@&quot;b&quot;,@&quot;c&quot;];</span><br><span class="line">NSString *string = [array componentsJoinedByString:@&quot;-&quot;];</span><br><span class="line">打印string  a-b-c</span><br></pre></td></tr></table></figure></p>
+<p><code>-</code> firstObjectCommonWithArray:<br>返回接收数组中包含的第一个对象，该对象等于另一个数组中的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[@&quot;a&quot;,@&quot;b&quot;,@&quot;c&quot;];</span><br><span class="line">NSArray *array2 = [array firstObjectCommonWithArray:@[@&quot;c&quot;,@&quot;a&quot;,@&quot;b&quot;]];</span><br><span class="line">打印array2   a</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><code>-</code> objectEnumerator<br>返回一个枚举器对象，该对象允许您访问数组中的每个对象。<br><code>-</code> reverseObjectEnumerator<br>返回一个枚举器对象，该对象允许您以相反的顺序访问数组中的每个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;7&quot;,@&quot;5&quot;,@&quot;6&quot;];</span><br><span class="line">NSEnumerator *enumerator = [array objectEnumerator];</span><br><span class="line">NSString *obj;</span><br><span class="line">while (obj = [enumerator nextObject]) &#123;</span><br><span class="line">    NSLog(@&quot;数组正序值开始打印：%@\n&quot;,obj);</span><br><span class="line">&#125;</span><br><span class="line">NSEnumerator *reverseEnumerator = [array reverseObjectEnumerator];</span><br><span class="line">id reverseObj;</span><br><span class="line">while (reverseObj = [reverseEnumerator nextObject]) &#123;</span><br><span class="line">    NSLog(@&quot;数组逆序值开始打印：%@\n&quot;,reverseObj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>-</code> (NSArray<objecttype> <em>)sortedArrayUsingFunction:(NSInteger (NS_NOESCAPE </em>)(ObjectType, ObjectType, void <em> _Nullable))comparator context:(nullable void </em>)context;<br>排序，已经有一种block的方法了，这也算是另一种实现,这种感觉没必要了，用swift的写法更便捷<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 实现函数</span><br><span class="line">NSInteger intSort(id num1, id num2, void *context) &#123;</span><br><span class="line">    int v1 = [num1 intValue];</span><br><span class="line">    int v2 = [num2 intValue];</span><br><span class="line">    if (v1 &lt; v2) &#123;</span><br><span class="line">        return NSOrderedAscending;</span><br><span class="line">    &#125; else if (v1 &gt; v2) &#123;</span><br><span class="line">        return NSOrderedDescending;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return NSOrderedSame;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">NSArray *array = @[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;7&quot;,@&quot;5&quot;,@&quot;6&quot;]</span><br><span class="line">NSArray *array1 = [array sortedArrayUsingFunction:intSort context:nil];</span><br><span class="line"></span><br><span class="line">// 便捷的实现排序</span><br><span class="line">NSArray *array = @[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;7&quot;,@&quot;5&quot;,@&quot;6&quot;];</span><br><span class="line">NSArray *array1 = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) &#123;</span><br><span class="line">        if ([obj1 intValue] &lt; [obj2 intValue]) &#123;</span><br><span class="line">            return NSOrderedAscending;</span><br><span class="line">        &#125;else if ([obj2 intValue] &lt; [obj1 intValue])&#123;</span><br><span class="line">            return NSOrderedDescending;</span><br><span class="line">        &#125;</span><br><span class="line">        return NSOrderedSame;</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure></objecttype></p>
+<p><code>-</code>(void)replaceObjectAtIndex:(NSUInteger)index withObject:(ObjectType)anObject;<br>用anObject替换index处的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSMutableArray *array = [NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</span><br><span class="line">[array replaceObjectAtIndex:0 withObject:@&quot;10&quot;];</span><br><span class="line">打印结果： @&quot;10&quot;,@&quot;2&quot;,@&quot;3&quot;</span><br></pre></td></tr></table></figure></p>
+<p>removeObjectIdenticalTo:将删除指向的对象，<br>removeObject:将针对数组中的所有项目运行isEqual:，并在其返回true时将其删除。<br> 编辑： 如果你知道你有相同的对象(如NSViews或类似的)，removeObject:应该用于removeObjectIdenticalTo:，PLACEHOLDER_FOR_CODE_4用于字符串和对象，它们可能不是同一个对象，但在实际应用中应该被认为是平等的，参考<a href="https://nshipster.cn/equality/" target="_blank" rel="noopener">Equality</a>看不可变的字符串有什么不同<br> 举个栗子<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSString * s1 = [NSMutableString stringWithString: @&quot;Red&quot;];</span><br><span class="line">NSString * s2 = [NSMutableString stringWithString: @&quot;Yellow&quot;];</span><br><span class="line">NSString * s3 = [NSMutableString stringWithString: @&quot;Red&quot;];</span><br><span class="line">NSString * s4 = [NSMutableString stringWithString: @&quot;Cyan&quot;];</span><br><span class="line">NSMutableArray * myColors = [NSMutableArray arrayWithObjects: s1,s2,s3,s4,nil];</span><br><span class="line">打印  [myColors removeObject:s1]; ，会将s1和s3都删掉</span><br><span class="line">     [myColors removeObjectIdenticalTo:s1]; 只删除s1</span><br></pre></td></tr></table></figure></p>
+<h2 id="数组常用技巧"><a href="#数组常用技巧" class="headerlink" title="数组常用技巧"></a>数组常用技巧</h2><h3 id="利用kvc获取数组求-和-平均值-最大值-最小值"><a href="#利用kvc获取数组求-和-平均值-最大值-最小值" class="headerlink" title="利用kvc获取数组求 和 / 平均值 / 最大值 / 最小值"></a>利用kvc获取数组求 和 / 平均值 / 最大值 / 最小值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;4&quot;,@&quot;5&quot;];</span><br><span class="line">// 最大值</span><br><span class="line">NSNumber *max = [array valueForKeyPath:@&quot;@max.floatValue&quot;];</span><br><span class="line">// 最小值</span><br><span class="line">NSNumber *min = [array valueForKeyPath:@&quot;@min.floatValue&quot;];</span><br><span class="line">// 平均值</span><br><span class="line">NSNumber *avg = [array valueForKeyPath:@&quot;@avg.floatValue&quot;];</span><br><span class="line">// 和</span><br><span class="line">NSNumber *sum = [array valueForKeyPath:@&quot;@sum.floatValue&quot;];</span><br><span class="line"></span><br><span class="line">或者不指定类型</span><br><span class="line">NSNumber *sum = [array valueForKeyPath:@&quot;@sum.self&quot;];</span><br></pre></td></tr></table></figure>
+<h3 id="快速去重"><a href="#快速去重" class="headerlink" title="快速去重"></a>快速去重</h3><p>去重，有很多种方式，利用新的数组、字典、NSSet、或者用KVC<br>数组去重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;,@&quot;1&quot;,@&quot;4&quot;,@&quot;5&quot;];</span><br><span class="line">NSMutableArray *requestAry = [NSMutableArray array];</span><br><span class="line">  for (NSString *string in array) &#123;</span><br><span class="line">    if (![requestAry containsObject:string]) &#123;</span><br><span class="line">         [requestAry addObject:string];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用字典去重，得到的数组是无序的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">NSMutableDictionary *dict = [NSMutableDictionary dictionary];</span><br><span class="line">    for (NSString *string in array) &#123;</span><br><span class="line">         [dict setObject:string forKey:string];</span><br><span class="line">     &#125;</span><br><span class="line">NSArray *dictAry = dict.allValues;</span><br><span class="line">```       </span><br><span class="line">NSSet去重，得到的数组无序</span><br><span class="line">```    </span><br><span class="line">NSSet *set = [NSSet setWithArray:array];</span><br><span class="line">NSArray *setAry =set.allObjects;</span><br></pre></td></tr></table></figure></p>
+<p>利用kvc来去重，相关<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/CollectionOperators.html" target="_blank" rel="noopener">苹果文档</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSArray *kvcAry = [array valueForKeyPath:@&quot;@distinctUnionOfObjects.self&quot;];</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建一个随机数组"><a href="#创建一个随机数组" class="headerlink" title="创建一个随机数组"></a>创建一个随机数组</h3><p>思想：利用两个数组，第一个数组存放要随机的原始数据，第二个数组存放结果；然后arc4random产生一个随机数，将这个随机数用作下标，把第一个数组对应下标的数据取出并删除。取出后存入第二个数组。然后循环往复就可以了。即便两次arc4random产生的随机数是相同的，但第一个数组对应下标的数据却是不一样的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (NSArray *)randomArray&#123;</span><br><span class="line">    // 随机数据源</span><br><span class="line">    NSMutableArray *arcAry = [[NSMutableArray alloc] initWithObjects:@1,@2,@3,@4,@5,@6, nil];</span><br><span class="line">    NSMutableArray *requestAry = [NSMutableArray array];</span><br><span class="line">    </span><br><span class="line">    // 个数，需要跟随机数组的个数相同</span><br><span class="line">    NSInteger m = 5;</span><br><span class="line">    for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">        int t = arc4random()%arcAry.count;</span><br><span class="line">        requestAry[i] = arcAry[t];</span><br><span class="line">        arcAry[t] = [arcAry lastObject]; //为了更好的乱序，所以交换一下位置</span><br><span class="line">        [arcAry removeLastObject];</span><br><span class="line">    &#125;</span><br><span class="line">    return requestAry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="分页分段截取"><a href="#分页分段截取" class="headerlink" title="分页分段截取"></a>分页分段截取</h3><p>数组分页/分段/分组，<br>元素0-4放 Array1 ，元素5-9放 Array2<br>最后元素20-22放Array5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NSMutableArray *array = [NSMutableArray array];</span><br><span class="line">for (int i = 0; i &lt; 23;i++) &#123;</span><br><span class="line">    NSString *s = [NSString stringWithFormat:@&quot;%d&quot;,i];</span><br><span class="line">    [array addObject:s];</span><br><span class="line">&#125;</span><br><span class="line">NSMutableArray *requestAry = [NSMutableArray array];</span><br><span class="line">NSInteger count = array.count;</span><br><span class="line">int j = 0;</span><br><span class="line">while (count) &#123;</span><br><span class="line">    NSRange range = NSMakeRange(j, MIN(5, count));</span><br><span class="line">    NSArray *subAry = [array subarrayWithRange:range];</span><br><span class="line">    [requestAry addObject:subAry];</span><br><span class="line">    count -= range.length;</span><br><span class="line">    j += range.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="单个cell存在多个视图"><a href="#单个cell存在多个视图" class="headerlink" title="单个cell存在多个视图"></a>单个cell存在多个视图</h3><p>一个cell上有多个重复view<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSInteger index = indexPath.row * 3;</span><br><span class="line">NSMutableArray *listAry = [NSMutableArray array];</span><br><span class="line">for (NSInteger i = index; i &lt; (index + 3); i++) &#123;</span><br><span class="line">    if (i &gt;= _appleSource.count ) &#123;break;&#125;</span><br><span class="line">    Recharge * recharge = (Recharge*)[_appleSource objectAtIndex:i];</span><br><span class="line">    [listAry addObject:recharge];</span><br><span class="line">&#125;</span><br><span class="line">cell.recharges = listAry;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="小白 wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫，订阅我的公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>回收二手人名币，量大从优</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="小白 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="小白 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NSArray/" rel="tag"># NSArray</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/13/AFNetworking源码解读/" rel="next" title="AFNetworking源码解读">
+                <i class="fa fa-chevron-left"></i> AFNetworking源码解读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg" alt="小白">
+            
+              <p class="site-author-name" itemprop="name">小白</p>
+              <p class="site-description motion-element" itemprop="description">一枚正在学习Android的iOS开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chuheridangwu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不常用的方法"><span class="nav-number">1.</span> <span class="nav-text">不常用的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组常用技巧"><span class="nav-number">2.</span> <span class="nav-text">数组常用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用kvc获取数组求-和-平均值-最大值-最小值"><span class="nav-number">2.1.</span> <span class="nav-text">利用kvc获取数组求 和 / 平均值 / 最大值 / 最小值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速去重"><span class="nav-number">2.2.</span> <span class="nav-text">快速去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个随机数组"><span class="nav-number">2.3.</span> <span class="nav-text">创建一个随机数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页分段截取"><span class="nav-number">2.4.</span> <span class="nav-text">分页分段截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单个cell存在多个视图"><span class="nav-number">2.5.</span> <span class="nav-text">单个cell存在多个视图</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!-- END LOCAL -->
+
+    
+      <script type="text/javascript">
+      function renderGitalk(){
+        var gitalk = new Gitalk({
+            owner: 'chuheridangwu',
+            repo: 'chuheridangwu.github.io',
+            clientID: '7ebc0fec98baf04c92e3',
+            clientSecret: '193bb08037ffca32e004427b7719a3f4523280eb',
+            admin: 'chuhe ',
+            
+              distractionFreeMode: 'true'
+            
+            });
+        gitalk.render('gitalk-container');
+      }
+      renderGitalk();
+      </script>
+    
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

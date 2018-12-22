@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Activity,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android 是使用任务(Task)来管理活动的，一个任务就是一组存放在栈里的活动集合，这个栈也称为返回栈。栈是一种后进先出的数据结构，在默认情况下，当我们启动一个新的Activity，它会在返回栈中入栈，处于栈顶。当我们按下Back键或者调用finsih()方法销毁一个活动时，处于栈顶的活动会出栈，前一个入栈的活动会处于栈顶的位置。系统总是显示栈顶的活动给用户。">
+<meta name="keywords" content="Activity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity">
+<meta property="og:url" content="/2018/08/08/Activity/index.html">
+<meta property="og:site_name" content="奔跑的小卖铺">
+<meta property="og:description" content="Android 是使用任务(Task)来管理活动的，一个任务就是一组存放在栈里的活动集合，这个栈也称为返回栈。栈是一种后进先出的数据结构，在默认情况下，当我们启动一个新的Activity，它会在返回栈中入栈，处于栈顶。当我们按下Back键或者调用finsih()方法销毁一个活动时，处于栈顶的活动会出栈，前一个入栈的活动会处于栈顶的位置。系统总是显示栈顶的活动给用户。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://developer.android.com/guide/components/images/activity_lifecycle.png?hl=zh-cn">
+<meta property="og:updated_time" content="2018-12-22T06:10:25.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Activity">
+<meta name="twitter:description" content="Android 是使用任务(Task)来管理活动的，一个任务就是一组存放在栈里的活动集合，这个栈也称为返回栈。栈是一种后进先出的数据结构，在默认情况下，当我们启动一个新的Activity，它会在返回栈中入栈，处于栈顶。当我们按下Back键或者调用finsih()方法销毁一个活动时，处于栈顶的活动会出栈，前一个入栈的活动会处于栈顶的位置。系统总是显示栈顶的活动给用户。">
+<meta name="twitter:image" content="https://developer.android.com/guide/components/images/activity_lifecycle.png?hl=zh-cn">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'GRK4YIMS5T',
+      apiKey: 'bef014ba7a9af458bd4e3e1367c30259',
+      indexName: 'github',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索内容","hits_empty":"没有找到关于: ${query} 的文章","hits_stats":"共找到${hits} 结果， 花费 ${time} 秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2018/08/08/Activity/">
+
+
+
+
+
+  <title>Activity | 奔跑的小卖铺</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0f01735046df1237d7f5388094b3a5bf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">奔跑的小卖铺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我们不能停，所以只能奔跑</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2018/08/08/Activity/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小白">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奔跑的小卖铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Activity</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T17:48:47+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Android 是使用任务(Task)来管理活动的，一个任务就是一组存放在栈里的活动集合，这个栈也称为返回栈。<strong>栈是一种后进先出的数据结构</strong>，在默认情况下，当我们启动一个新的Activity，它会在返回栈中入栈，处于栈顶。当我们按下Back键或者调用<code>finsih()</code>方法销毁一个活动时，处于栈顶的活动会出栈，前一个入栈的活动会处于栈顶的位置。系统总是显示栈顶的活动给用户。<br><a id="more"></a></p>
+<h2 id="Activity的状态"><a href="#Activity的状态" class="headerlink" title="Activity的状态"></a>Activity的状态</h2><h3 id="运行状态"><a href="#运行状态" class="headerlink" title="运行状态"></a>运行状态</h3><p>当活动处于栈顶的时候属于运行状态，系统最不愿意回收的就是处于运行状态的活动。</p>
+<h3 id="暂停状态"><a href="#暂停状态" class="headerlink" title="暂停状态"></a>暂停状态</h3><p>当一个活动不再处于栈顶，但仍然可见时，这时活动进入暂停状态。处于暂停状态的活动仍然是完全存活的，只有在内存极低的情况下，系统才会去考虑回收这种活动</p>
+<h3 id="停止活动"><a href="#停止活动" class="headerlink" title="停止活动"></a>停止活动</h3><p>当活动不处于栈顶并且完全不可见的时候，就进入停止状态，系统仍然会为这种活动保存相应的状态和成员变量，这不是完全可靠的，当其他地方需要内存时，处于停止状态的活动可能会被系统回收</p>
+<h3 id="销毁状态"><a href="#销毁状态" class="headerlink" title="销毁状态"></a>销毁状态</h3><p>当活动从返回栈中移除后属于销毁状态，系统会回收这种状态的活动</p>
+<h2 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h2><ul>
+<li><code>onCreate()</code>: 在活动第一次被创建的时候调用，加载布局、绑定时间等操作在这个方法中进行</li>
+<li><code>onStart()</code>:  活动由不可见变为可见的时候调用</li>
+<li><code>onResume()</code>: 活动准备好和用户进行交互的时候调用，此时活动一定位于返回栈的栈顶，并处于运行状态  </li>
+<li><code>onPause()</code>: 系统准备去启动或者恢复另一个活动的时候调用，通常会在这个方法将消耗CPU的资源释放掉，以及保存一些关键数据，<strong>这个方法的执行速度一定要快，不然会影响新的栈顶活动的使用</strong> </li>
+<li><code>onStop()</code>: 活动完全不可见的时候调用，它和<code>onPause()</code>方法的区别在于，如果启动的新活动是一个对话框式的活动，那么<code>onPause()</code>方法会得到执行，而<code>onStop()</code>方法并不会执行 </li>
+<li><code>onDestroy()</code>: 活动被销毁之前调用，之后的活动状态将变为销毁状态 </li>
+<li><code>onRestart()</code>: 活动由停止状态变为运行状态之前调用，也就是活动被重新启动了<br><img src="https://developer.android.com/guide/components/images/activity_lifecycle.png?hl=zh-cn" alt=""></li>
+</ul>
+<h3 id="Example："><a href="#Example：" class="headerlink" title="Example："></a>Example：</h3><p>当前有两个活动<code>MainActivity</code>和<code>SendaActivity</code>,MainActivity为主入口活动，在生命周期的每个方法上都打上log。<br>在启动程序的时候，运行顺序：<br><code>MainActivity: onCreate()</code>、<br><code>MainActivity: onStart()</code>、<br><code>MainActivity: onResume()</code><br>从MainActivity跳转到SendaActivity活动时，调用顺序：<br><code>MainActivity: onPause()</code>、<br><code>SendActivity: onCreate()</code>、<br><code>SendActivity: onStart()</code>、<br><code>SendActivity: onResume()</code>、<br><code>MainActivity: onStop()</code><br>从SendaActivity返回MainActivity时的调用顺序：<br><code>SendActivity: onPause()</code>、<br><code>MainActivity: onRestart()</code>、<br><code>MainActivity: onStart()</code>、<br><code>MainActivity: onResume()</code>、<br><code>SendActivity: onStop()</code>、<br><code>SendActivity: onDestroy()</code></p>
+<h2 id="Activity之间的数据传递"><a href="#Activity之间的数据传递" class="headerlink" title="Activity之间的数据传递"></a>Activity之间的数据传递</h2><p><code>Activity</code>之间可以直接使用<code>Intent</code>进行传递数据，或者把数据包装成<code>Bundle</code>，再用<code>Intent</code>进行传递。可以传递简单的数据，或者传递对象，对象需要进行序列化。</p>
+<h3 id="传递普通数据"><a href="#传递普通数据" class="headerlink" title="传递普通数据"></a>传递普通数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent i = new Intent(MainActivity.this,TestActivity.class);</span><br><span class="line">i.putExtra(&quot;data&quot;,&quot;helloWordxiaojeijei&quot;);</span><br><span class="line">startActivity(i);</span><br></pre></td></tr></table></figure>
+<h3 id="使用Bundle传递数据"><a href="#使用Bundle传递数据" class="headerlink" title="使用Bundle传递数据"></a>使用<code>Bundle</code>传递数据</h3><h4 id="传递数据"><a href="#传递数据" class="headerlink" title="传递数据"></a>传递数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Intent i = new Intent(MainActivity.this,TestActivity.class);</span><br><span class="line">Bundle bundle = new Bundle();</span><br><span class="line">bundle.putInt(&quot;age&quot;,17);</span><br><span class="line">bundle.putString(&quot;name&quot;,&quot;dongyumao&quot;);</span><br><span class="line">i.putExtras(bundle);</span><br><span class="line">startActivity(i);</span><br></pre></td></tr></table></figure>
+<h4 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent i  = getIntent();</span><br><span class="line">Bundle b = i.getExtras();</span><br><span class="line">TextView textView = findViewById(R.id.textView);</span><br><span class="line">textView.setText(String.format(&quot;age=%d,name=%s，name1=%s&quot;,b.get(&quot;age&quot;),b.get(&quot;name&quot;),b.getString(&quot;name1&quot;,&quot;test&quot;)));</span><br></pre></td></tr></table></figure>
+<p><code>b.getString(&quot;name1&quot;,&quot;test&quot;)</code>: 如果name1字段没有数据，使用默认数据”test”</p>
+<h3 id="使用对象进行传递数据"><a href="#使用对象进行传递数据" class="headerlink" title="使用对象进行传递数据"></a>使用对象进行传递数据</h3><p>需要对类进行序列化，使用对象传递数据有两种方式<code>implements Serializable</code>或者 <code>implements Parcelable</code>。<code>Parcelable</code>需要重写两个方法</p>
+<h4 id="使用implements-Serializable进行传递创建User对象，"><a href="#使用implements-Serializable进行传递创建User对象，" class="headerlink" title="使用implements Serializable进行传递创建User对象，"></a>使用<code>implements Serializable</code>进行传递创建User对象，</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class User  implements Serializable&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    // 重写 get set 方法</span><br><span class="line">    </span><br><span class="line">   public User(String name,int age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent i = new Intent(MainActivity.this,TestActivity.class);</span><br><span class="line">i.putExtra(&quot;data&quot;, new User(&quot;test111&quot;,18));</span><br><span class="line">startActivity(i);</span><br></pre></td></tr></table></figure>
+<h5 id="接受消息"><a href="#接受消息" class="headerlink" title="接受消息"></a>接受消息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent i  = getIntent();</span><br><span class="line">User u = (User) i.getSerializableExtra(&quot;data&quot;);</span><br><span class="line">TextView textView = findViewById(R.id.textView);</span><br><span class="line">textView.setText(String.format(&quot;age=%d,name=%s&quot;,u.getAge(),u.getName()));</span><br></pre></td></tr></table></figure>
+<h4 id="使用Parcelable进行传递对象"><a href="#使用Parcelable进行传递对象" class="headerlink" title="使用Parcelable进行传递对象"></a>使用<code>Parcelable</code>进行传递对象</h4><p>创建User类，需要重写Parcelable的<code>describeContents()</code> 和 <code>writeToParcel()</code> 方法，在<code>writeToParcel()</code>方法中调用 <code>dest</code>的<code>writeXXX()</code>方法，将User字段一一写出来。<br>同时，需要在User类中提供一个名为 <strong>CREATOR</strong> 的常量，创建Parcelable.Creator 接口的一个实现，并将泛型指定为User，需要重写 <code>createFromParcel()</code> 和 <code>newArray()</code>方法，在 <code>newArray()</code>方法中需要返回一个User数组，并使用方法传入size作为数组大小， <code>createFromParcel()</code> 方法需要使用<code>Parcel</code>的 <code>readXXX()</code> 方法读取刚才写入的字段，并创建一个User对象进行返回.</p>
+<h5 id="user类"><a href="#user类" class="headerlink" title="user类"></a>user类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class User  implements Parcelable&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">     // 重写 get set 方法</span><br><span class="line"></span><br><span class="line">   public User(String name,int age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int describeContents() &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void writeToParcel(Parcel dest, int flags) &#123;</span><br><span class="line">        dest.writeString(name);</span><br><span class="line">        dest.writeInt(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static final Parcelable.Creator&lt;User&gt; CREATOR = new Creator&lt;User&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public User createFromParcel(Parcel source) &#123;</span><br><span class="line">            return new User(source.readString(),source.readInt());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public User[] newArray(int size) &#123;</span><br><span class="line">            return new User[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="发送消息-1"><a href="#发送消息-1" class="headerlink" title="发送消息"></a>发送消息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent i = new Intent(MainActivity.this,TestActivity.class);</span><br><span class="line">i.putExtra(&quot;data&quot;, new User(&quot;test111&quot;,18));</span><br><span class="line">startActivity(i);</span><br></pre></td></tr></table></figure>
+<h5 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent i  = getIntent();</span><br><span class="line">User u = (User) i.getParcelableExtra(&quot;data&quot;);</span><br><span class="line">TextView textView = findViewById(R.id.textView);</span><br><span class="line">textView.setText(String.format(&quot;age=%d,name=%s&quot;,u.getAge(),u.getName()));</span><br></pre></td></tr></table></figure>
+<h3 id="回调方法，从B返回A的时候传递数据"><a href="#回调方法，从B返回A的时候传递数据" class="headerlink" title="回调方法，从B返回A的时候传递数据"></a>回调方法，从B返回A的时候传递数据</h3><p>A到B,在启动B  Activity时，需要调用<code>startActivityForResult(Intent,int)</code> 方法，并且重写<code>onActivityResult()</code>方法，B的返回结果都会在该方法中展示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data)&#123;</span><br><span class="line">    super.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    String str = data.getStringExtra(&quot;key&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从B返回A</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent i = new Intent();</span><br><span class="line">i.putExtra(&quot;key&quot;, &quot;测试结果&quot;);</span><br><span class="line">setResult(1,i);</span><br><span class="line">finish();</span><br></pre></td></tr></table></figure>
+<h2 id="Activity的启动模式"><a href="#Activity的启动模式" class="headerlink" title="Activity的启动模式"></a>Activity的启动模式</h2><p>活动的启动模式有4种，<code>standard</code> <code>singleTop</code> <code>singleTask</code> <code>singleInstance</code>,可以在 <strong>AndroidManifest.xml</strong> 中通过<activity>标签指定 <code>android:launchMode</code>属性来选择启动模式</activity></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;</span><br><span class="line">           android:launchMode=&quot;standard&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p><code>standard</code>是活动默认使用的启动模式，在不进行显示指定的情况下，所有活动都会自动使用这种启动模式。使用<code>standard</code>模式的活动，系统不会在乎这个活动是否已经在栈中存在，每次启动都会创建一个新的活动实例，并置于栈顶</p>
+<h3 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h3><p><code>singleTop</code>模式可以解决重复创建栈顶活动的问题，如果当前活动处于栈顶，则不会继续创建新的活动，但是如果当前活动不在栈顶，则会创建新的活动</p>
+<h3 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h3><p><code>singleTask</code>模式在整个app运行期间只会创建一个实例</p>
+<h3 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h3><p><code>singleInstance</code>会启动一个新的返回栈来管理这个活动（如果<code>singleTask</code>模式指定了不同的<code>taskAffinity</code>,也会启动一个新的返回栈）</p>
+<h2 id="Activity的小知识"><a href="#Activity的小知识" class="headerlink" title="Activity的小知识"></a>Activity的小知识</h2><h3 id="设置入口活动"><a href="#设置入口活动" class="headerlink" title="设置入口活动"></a>设置入口活动</h3><p>在<code>AndroidManifest.xml</code>中的<code>&lt;intent-filter&gt;</code>标签设置主活动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;</span><br><span class="line">        android:launchMode=&quot;singleInstance&quot;&gt;</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line">    &lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Activity的全路径"><a href="#Activity的全路径" class="headerlink" title="Activity的全路径"></a>Activity的全路径</h3><p><code>&lt;activity android:name=&quot;.SendActivity&quot;&gt;&lt;/activity&gt;</code><br>加上包的路径<code>package=&quot;com.example.dym.testactivity&quot;</code><br>是活动的全路径 <code>com.example.dym.testactivity.SendActivity</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    package=&quot;com.example.dym.testactivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        android:supportsRtl=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</span><br><span class="line">        &lt;activity android:name=&quot;.MainActivity&quot;</span><br><span class="line">            android:launchMode=&quot;singleInstance&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line">        &lt;activity android:name=&quot;.SendActivity&quot;&gt;&lt;/activity&gt;</span><br><span class="line">    &lt;/application&gt;</span><br><span class="line"></span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://developer.android.com/guide/components/activities/intro-activities" target="_blank" rel="noopener">谷歌官方文档</a><br>[第一行代码第2版]</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="小白 wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫，订阅我的公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>回收二手人名币，量大从优</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="小白 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="小白 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Activity/" rel="tag"># Activity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/07/VPS创建数据库/" rel="next" title="搬瓦工centos7.0创建数据库">
+                <i class="fa fa-chevron-left"></i> 搬瓦工centos7.0创建数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/10/Intent/" rel="prev" title="Intent">
+                Intent <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="gitalk-container"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523098473764&di=b214144e398eda34b1d118c9775d0599&imgtype=0&src=http%3A%2F%2Fi-3.391k.com%2F2017%2F6%2F7%2F836bf465-7d2e-4702-b7a7-1eee1fc08a40.jpg" alt="小白">
+            
+              <p class="site-author-name" itemprop="name">小白</p>
+              <p class="site-description motion-element" itemprop="description">一枚正在学习Android的iOS开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chuheridangwu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的状态"><span class="nav-number">1.</span> <span class="nav-text">Activity的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行状态"><span class="nav-number">1.1.</span> <span class="nav-text">运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂停状态"><span class="nav-number">1.2.</span> <span class="nav-text">暂停状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止活动"><span class="nav-number">1.3.</span> <span class="nav-text">停止活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁状态"><span class="nav-number">1.4.</span> <span class="nav-text">销毁状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的生命周期"><span class="nav-number">2.</span> <span class="nav-text">Activity的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example："><span class="nav-number">2.1.</span> <span class="nav-text">Example：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity之间的数据传递"><span class="nav-number">3.</span> <span class="nav-text">Activity之间的数据传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传递普通数据"><span class="nav-number">3.1.</span> <span class="nav-text">传递普通数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Bundle传递数据"><span class="nav-number">3.2.</span> <span class="nav-text">使用Bundle传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传递数据"><span class="nav-number">3.2.1.</span> <span class="nav-text">传递数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取数据"><span class="nav-number">3.2.2.</span> <span class="nav-text">获取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用对象进行传递数据"><span class="nav-number">3.3.</span> <span class="nav-text">使用对象进行传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用implements-Serializable进行传递创建User对象，"><span class="nav-number">3.3.1.</span> <span class="nav-text">使用implements Serializable进行传递创建User对象，</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#发送消息"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">发送消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接受消息"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">接受消息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Parcelable进行传递对象"><span class="nav-number">3.3.2.</span> <span class="nav-text">使用Parcelable进行传递对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#user类"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">user类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送消息-1"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">发送消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接收消息"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">接收消息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调方法，从B返回A的时候传递数据"><span class="nav-number">3.4.</span> <span class="nav-text">回调方法，从B返回A的时候传递数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的启动模式"><span class="nav-number">4.</span> <span class="nav-text">Activity的启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#standard"><span class="nav-number">4.1.</span> <span class="nav-text">standard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#singleTop"><span class="nav-number">4.2.</span> <span class="nav-text">singleTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#singleTask"><span class="nav-number">4.3.</span> <span class="nav-text">singleTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#singleInstance"><span class="nav-number">4.4.</span> <span class="nav-text">singleInstance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的小知识"><span class="nav-number">5.</span> <span class="nav-text">Activity的小知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置入口活动"><span class="nav-number">5.1.</span> <span class="nav-text">设置入口活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity的全路径"><span class="nav-number">5.2.</span> <span class="nav-text">Activity的全路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<!-- END LOCAL -->
+
+    
+      <script type="text/javascript">
+      function renderGitalk(){
+        var gitalk = new Gitalk({
+            owner: 'chuheridangwu',
+            repo: 'chuheridangwu.github.io',
+            clientID: '7ebc0fec98baf04c92e3',
+            clientSecret: '193bb08037ffca32e004427b7719a3f4523280eb',
+            admin: 'chuhe ',
+            
+              distractionFreeMode: 'true'
+            
+            });
+        gitalk.render('gitalk-container');
+      }
+      renderGitalk();
+      </script>
+    
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
