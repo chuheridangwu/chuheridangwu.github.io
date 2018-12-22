@@ -802,7 +802,6 @@
   
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://blog-static.cnblogs.com/files/zhaozhan/md5.js"></script>
 <!-- END LOCAL -->
 
     
@@ -814,7 +813,7 @@
             clientID: '7ebc0fec98baf04c92e3',
             clientSecret: '193bb08037ffca32e004427b7719a3f4523280eb',
             admin: 'chuheridangwu',
-            id: md5(location.pathname),
+            id: location.pathname,
             
               distractionFreeMode: 'true'
             
