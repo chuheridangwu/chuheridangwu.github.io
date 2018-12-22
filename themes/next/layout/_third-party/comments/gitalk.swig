@@ -4,7 +4,6 @@
   {% set CommentsClass = "Gitalk" %}
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="{{ site.baseurl }}/js/md5.min.js"></script>
 <!-- END LOCAL -->
 
     {% if page.comments %}
@@ -16,7 +15,7 @@
             clientID: '{{ theme.gitalk.client_id }}',
             clientSecret: '{{ theme.gitalk.client_secret }}',
             admin: '{{ theme.gitalk.admin }}',
-            id: location.pathname,
+            id: '<%=page.date%>',
             {% if theme.gitalk.distractionFreeMode %}
               distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
             {% endif %}
