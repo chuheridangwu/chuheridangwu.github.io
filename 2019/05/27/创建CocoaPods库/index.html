@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Intent,">
+  <meta name="keywords" content="CocoaPods,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
-<meta name="keywords" content="Intent">
+<meta name="description" content="制作github仓库   在github上创建自己的仓库   1234git add .git commit -s -m &amp;quot;Initial Commit of Library&amp;quot;git remote add origin https://github.com/chuheridangwu/swiftTool.gitgit push -u https://github.com/chu">
+<meta name="keywords" content="CocoaPods">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Intent">
-<meta property="og:url" content="/2018/08/10/Intent/index.html">
+<meta property="og:title" content="创建CocoaPods库">
+<meta property="og:url" content="/2019/05/27/创建CocoaPods库/index.html">
 <meta property="og:site_name" content="奔跑的小卖铺">
-<meta property="og:description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
+<meta property="og:description" content="制作github仓库   在github上创建自己的仓库   1234git add .git commit -s -m &amp;quot;Initial Commit of Library&amp;quot;git remote add origin https://github.com/chuheridangwu/swiftTool.gitgit push -u https://github.com/chu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://developer.android.com/images/components/intent-filters@2x.png">
-<meta property="og:updated_time" content="2018-12-22T06:10:25.872Z">
+<meta property="og:updated_time" content="2019-05-27T11:25:24.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Intent">
-<meta name="twitter:description" content="Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：  启动Activity :  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。  如果希望在 Activity 完成后收到">
-<meta name="twitter:image" content="https://developer.android.com/images/components/intent-filters@2x.png">
+<meta name="twitter:title" content="创建CocoaPods库">
+<meta name="twitter:description" content="制作github仓库   在github上创建自己的仓库   1234git add .git commit -s -m &amp;quot;Initial Commit of Library&amp;quot;git remote add origin https://github.com/chuheridangwu/swiftTool.gitgit push -u https://github.com/chu">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="/2018/08/10/Intent/">
+  <link rel="canonical" href="/2019/05/27/创建CocoaPods库/">
 
 
 
 
 
-  <title>Intent | 奔跑的小卖铺</title>
+  <title>创建CocoaPods库 | 奔跑的小卖铺</title>
   
 
 
@@ -313,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2018/08/10/Intent/">
+    <link itemprop="mainEntityOfPage" href="/2019/05/27/创建CocoaPods库/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小白">
@@ -330,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Intent</h1>
+          <h1 class="post-title" itemprop="name headline">创建CocoaPods库</h1>
         
 
         <div class="post-meta">
@@ -342,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T10:10:54+08:00">
-                2018-08-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-27T16:34:37+08:00">
+                2019-05-27
               </time>
             
 
@@ -365,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/安卓/" itemprop="url" rel="index">
-                    <span itemprop="name">安卓</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -407,36 +405,20 @@
       
 
       
-        <p>Intent 是一个消息传递对象，可以使用它从其他应用组件请求操作。Intent 其基本用例主要包括以下三个：</p>
-<ul>
-<li><strong>启动Activity :</strong><br>  Activity 表示应用中的一个屏幕。通过将 Intent 传递给 startActivity()，您可以启动新的 Activity 实例。Intent 描述了要启动的 Activity，并携带了任何必要的数据。</li>
-</ul>
-<p>如果希望在 Activity 完成后收到结果，请调用 startActivityForResult()。在上个 Activity 的 onActivityResult() 回调中，Intent会在这个方法中传递过来。</p>
-<ul>
-<li><strong>启动服务 :</strong><br>  Service 是一个不使用用户界面而在后台执行操作的组件。通过将 Intent 传递给 startService()，您可以启动服务执行一次性操作（例如，下载文件）。Intent 描述了要启动的服务，并携带了任何必要的数据。</li>
-</ul>
-<p>如果服务旨在使用客户端-服务器接口，则通过将 Intent 传递给 bindService()，您可以从其他组件绑定到此服务</p>
-<ul>
-<li><strong>传递广播 :</strong><br>  广播是任何应用均可接收的消息。系统将针对系统事件（例如：系统启动或设备开始充电时）传递各种广播。通过将 Intent 传递给 sendBroadcast()、sendOrderedBroadcast() 或 sendStickyBroadcast()，您可以将广播传递给其他应用。   <a id="more"></a>
-<h2 id="显式Intent"><a href="#显式Intent" class="headerlink" title="显式Intent"></a>显式Intent</h2>按名称（限定类名）指定要启动的组件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startActivity(new Intent(MainActivity.this,SendActivity.class));</span><br></pre></td></tr></table></figure>
-<h2 id="隐式Intent"><a href="#隐式Intent" class="headerlink" title="隐式Intent"></a>隐式Intent</h2><p>创建隐式Intent时，系统会通过Intent的内容与设备上其他应用的<a href="https://developer.android.com/guide/topics/manifest/manifest-intro" target="_blank" rel="noopener">清单文件</a>中声明的Intent过滤器进行比较，从而找到相应的组件。如果Intent 与 Intent过滤器匹配，系统将启动该组件，并向其传递Intent对象。<br>如果有多个Intent过滤器兼容，系统会显示一个对话框，支持用户选择要使用的应用。<br>如果没有为Activity声明任何Intent过滤器，Activity只能通过显式intent启动<br><code>AndroidManifest.xml</code>文件就是清单文件</p>
-<h3 id="发送隐式Intent"><a href="#发送隐式Intent" class="headerlink" title="发送隐式Intent"></a>发送隐式Intent</h3><p>通过隐式Intent调用 <code>&lt;aciton&gt;</code> 格式为<code>com.test.android.intent.action.Sendactivity</code>的Activity,<strong>如果没有应用可以处理隐式Inetnt，应用会崩溃，所以调用前需要使用<code>resolveActivity()</code>方法验证手机是否有程序可以处理该Intent</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = new Intent(&quot;com.test.android.intent.action.Sendactivity&quot;);</span><br><span class="line">           if (intent.resolveActivity(getPackageManager()) != null)&#123;</span><br><span class="line">                   startActivity(intent);</span><br><span class="line">               &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="接收隐式Intent"><a href="#接收隐式Intent" class="headerlink" title="接收隐式Intent"></a>接收隐式Intent</h3><p>为了接收隐式Intent，必须在Intent过滤器中将一个<code>&lt;category&gt;</code>标签设置为<code>DEFAULT</code>类别，这样方法<code>startActivity()</code>和<code>startActivityForResult()</code>才会按照已申明的类别方式处理所有的Intent,<strong>如果未在Intent过滤器中声明此类别<code>DEFAULT</code>，则隐式Intent不会解析。</strong><br><code>&lt;action&gt;</code>标签格式一般为：包名.intent.action.类名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.SendActivity&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;action android:name=&quot;com.test.android.intent.action.Sendactivity&quot;&gt;&lt;/action&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Intent过滤器-IntentFilter"><a href="#Intent过滤器-IntentFilter" class="headerlink" title="Intent过滤器 - IntentFilter"></a>Intent过滤器 - IntentFilter</h3><p> intent 过滤器在清单中被指定为 <intent-filter> 元素。一个组件可有任意数量的过滤器，其中每个过滤器描述一种不同的功能。<code>category</code>和<code>action</code>标签可以有多个<br> intent过滤器可以直接在<code>AndroidManifest.xml</code>文件中添加，也可以直接使用<strong>IntentFilter</strong>进行创建，文件中添加为静态，使用<strong>IntentFilter</strong>动态创建更加灵活</intent-filter></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">    &lt;action android:name=&quot;com.example.dym.locholandroid.intent.action.Sendaction&quot;&gt;&lt;/action&gt;</span><br><span class="line">&lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure>
-<p>如果有多个应用都可以接收隐式Intent,会出现选项框让你选择要调用的应用。有两个选择，仅此一次或者永远。<br>选择仅此一次，下次点击按钮的时候弹窗还会出现，<br>选择永远，下次点击按钮直接调用，如果想可以重新选择，需要进入设置，清除<strong>选择应用</strong>的默认设置</p>
-<h3 id="通过URL打开app"><a href="#通过URL打开app" class="headerlink" title="通过URL打开app"></a>通过URL打开app</h3><p>需要在网页中植入一个点击链接，对应下面 <code>&lt;data&gt;</code>标签的<strong>scheme</strong>内容<code>&lt;a href=&quot;app://&quot;&gt;启动应用程序&lt;/a&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.SendActivity&quot;&gt;</span><br><span class="line">    &lt;intent-filter&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;&gt;&lt;/category&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.VIEW&quot;&gt;&lt;/action&gt;</span><br><span class="line">        &lt;data android:scheme=&quot;app&quot;&gt;&lt;/data&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
-<p><code>android.intent.category.BROWSABLE</code>: 可以被浏览器启动</p>
-<h3 id="隐式Intent的使用技巧"><a href="#隐式Intent的使用技巧" class="headerlink" title="隐式Intent的使用技巧"></a>隐式Intent的使用技巧</h3><p>可以直接通过隐式Intent调用其他app的活动<br>如果Activity只允许在当前程序内部才可以访问，需要对Activity配置<code>android:exported=&quot;false&quot;</code>，这样其他程序就无法调用当前活动了</p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
-<p>为了确保应用的安全性，启动 Service 时，请始终使用显式 Intent，且不要为服务声明 Intent 过滤器。使用隐式 Intent 启动服务存在安全隐患，因为您无法确定哪些服务将响应 Intent，且用户无法看到哪些服务已启动。从 Android 5.0（API 级别 21）开始，如果使用隐式 Intent 调用 bindService()，系统会引发异常。</p>
-</blockquote>
-<h2 id="隐式-Intent-如何通过系统传递以启动其他-Activity-的"><a href="#隐式-Intent-如何通过系统传递以启动其他-Activity-的" class="headerlink" title="隐式 Intent 如何通过系统传递以启动其他 Activity 的"></a>隐式 Intent 如何通过系统传递以启动其他 Activity 的</h2><p><img src="https://developer.android.com/images/components/intent-filters@2x.png" alt=""><br>图解：<br>[1] Activity A 创建包含操作描述的 Intent，并将其传递给 startActivity()。<br>[2] Android 系统搜索所有应用中与 Intent 匹配的 Intent 过滤器。 找到匹配项之后。<br>[3] 该系统通过调用匹配 Activity（Activity B）的 onCreate() 方法并将其传递给 Intent，以此启动匹配 Activity。</p>
-<h2 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h2><p><a href="https://developer.android.com/guide/components/intents-filters" target="_blank" rel="noopener">谷歌Intent文档</a></p>
+        <h2 id="制作github仓库"><a href="#制作github仓库" class="headerlink" title="制作github仓库"></a>制作github仓库</h2><p>   在github上创建自己的仓库<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -s -m &quot;Initial Commit of Library&quot;</span><br><span class="line">git remote add origin https://github.com/chuheridangwu/swiftTool.git</span><br><span class="line">git push -u https://github.com/chuheridangwu/swiftTool.git</span><br></pre></td></tr></table></figure></p>
+   <a id="more"></a>
+<h2 id="支持cocoapods"><a href="#支持cocoapods" class="headerlink" title="支持cocoapods"></a>支持cocoapods</h2><h3 id="创建spec文件"><a href="#创建spec文件" class="headerlink" title="创建spec文件"></a>创建spec文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim swiftTool.podspec</span><br></pre></td></tr></table></figure>
+<h3 id="编辑spec文件"><a href="#编辑spec文件" class="headerlink" title="编辑spec文件"></a>编辑spec文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line"># 这个是pod 的名称</span><br><span class="line">s.name = &apos;swiftTool&apos;</span><br><span class="line"># 【这个版本号一定要和后面的tag一样】</span><br><span class="line">s.version = &apos;0.1.2&apos;</span><br><span class="line">s.summary = &apos;swift常用文件&apos;</span><br><span class="line">#使用arc</span><br><span class="line">s.requires_arc = true</span><br><span class="line"># 项目主页代码</span><br><span class="line">s.homepage = &apos;https://github.com/chuheridangwu/swiftTool&apos;</span><br><span class="line"># LICENSE信息，这里是Apache;有的是MIT，换成MIT就OK了</span><br><span class="line">s.license = &#123; :type =&gt; &apos;MIT&apos;, :file =&gt; &apos;LICENSE&apos; &#125;</span><br><span class="line">s.author = &#123; &apos;&lt;作者名称&gt;&apos; =&gt; &apos;&lt;邮箱地址&gt;&apos; &#125;</span><br><span class="line"># 仓库地址</span><br><span class="line">s.source = &#123; :git =&gt; &apos;https://github.com/chuheridangwu/swiftTool.git&apos;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line">        </span><br><span class="line">s.ios.deployment_target = &apos;8.0&apos;</span><br><span class="line">#设置swift试用版本</span><br><span class="line">s.swift_version = &apos;4.0&apos;</span><br><span class="line"># 上传file地址</span><br><span class="line">s.source_files = &apos;SwiftTool/Classes/*.&#123;swift,h,m&#125;&apos;</span><br><span class="line">     </span><br><span class="line">#资源文件地址</span><br><span class="line">#  s.resource_bundles = &#123;</span><br><span class="line">     &apos;SwiftTool&apos; =&gt; [&apos;SwiftTool/Assets/**/*.png&apos;]&#125;</span><br><span class="line">s.resources = &quot;SwiftTool/Assets/ELProgressHUD.bundle&quot;</span><br><span class="line"># 第三方依赖库，多个的话在后面加逗号隔开</span><br><span class="line">s.dependency &apos;MBProgressHUD&apos;, &apos;~&gt; 1.1.0&apos;</span><br><span class="line"># 强烈建议加上这句，取出警告</span><br><span class="line">s.pod_target_xcconfig = &#123; &apos;SWIFT_SUPPRESS_WARNINGS&apos; =&gt; &apos;YES&apos; &#125; </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/f841e248bc4f" target="_blank" rel="noopener">cocoapods系列教程—spec文件</a></p>
+<h3 id="创建tag"><a href="#创建tag" class="headerlink" title="创建tag"></a>创建tag</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -m &quot;第一个版本&quot; 版本号</span><br></pre></td></tr></table></figure>
+<h3 id="注册cocoapods账号"><a href="#注册cocoapods账号" class="headerlink" title="注册cocoapods账号"></a>注册cocoapods账号</h3><p>如果没有创建Cocoapods账号, 成功会收到一封邮件，需要点击邮件链接<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register 邮箱 &apos;用户名&apos; --verbose</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看注册信息"><a href="#查看注册信息" class="headerlink" title="查看注册信息"></a>查看注册信息</h3><p>可以查看你已经注册的信息，其中包含你的name、email、since、Pods、sessions，其中Pods为你往CocoaPods提交的所有的Pod！<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure></p>
+<h3 id="检测podspec文件"><a href="#检测podspec文件" class="headerlink" title="检测podspec文件"></a>检测podspec文件</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint swiftTool.podspec</span><br><span class="line">//  去除警告编译</span><br><span class="line">pod spec lint swiftTool.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
+<h3 id="上传到cocoapods仓库"><a href="#上传到cocoapods仓库" class="headerlink" title="上传到cocoapods仓库"></a>上传到cocoapods仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push ELProgressHUD.podspec</span><br></pre></td></tr></table></figure>
+<h3 id="搜索新建的库"><a href="#搜索新建的库" class="headerlink" title="搜索新建的库"></a>搜索新建的库</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod search swiftTool</span><br></pre></td></tr></table></figure>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="1、-找不到自己创建的库"><a href="#1、-找不到自己创建的库" class="headerlink" title="1、 找不到自己创建的库"></a>1、 找不到自己创建的库</h3><p>如果你使用pod search 发现搜索的库是老的库或者search不到,调用命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、 pod setup, </span><br><span class="line">2、 执行: rm ~/Library/Caches/CocoaPods/search_index.json</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、ERROR-iOS-unknown-Encountered-an-unknown-error-Could-not-find-a-ios-simulator-valid-values-com-apple-coresimulator-simruntime-ios-10-3-com-apple-coresimulator-simruntime-ios-12-1-com-apple-coresimulator-simruntime-ios-8-1-com-apple-coresimulator-simruntime-tvos-12-1-com-apple-coresimulator-simruntime-watchos-5-1-Ensure-that-Xcode-gt-Window-gt-Devices-has-at-least-one-ios-simulator-listed-or-otherwise-add-one"><a href="#2、ERROR-iOS-unknown-Encountered-an-unknown-error-Could-not-find-a-ios-simulator-valid-values-com-apple-coresimulator-simruntime-ios-10-3-com-apple-coresimulator-simruntime-ios-12-1-com-apple-coresimulator-simruntime-ios-8-1-com-apple-coresimulator-simruntime-tvos-12-1-com-apple-coresimulator-simruntime-watchos-5-1-Ensure-that-Xcode-gt-Window-gt-Devices-has-at-least-one-ios-simulator-listed-or-otherwise-add-one" class="headerlink" title="2、ERROR | [iOS] unknown: Encountered an unknown error (Could not find a ios simulator (valid values: com.apple.coresimulator.simruntime.ios-10-3, com.apple.coresimulator.simruntime.ios-12-1, com.apple.coresimulator.simruntime.ios-8-1, com.apple.coresimulator.simruntime.tvos-12-1, com.apple.coresimulator.simruntime.watchos-5-1). Ensure that Xcode -&gt; Window -&gt; Devices has at least one ios simulator listed or otherwise add one."></a>2、ERROR | [iOS] unknown: Encountered an unknown error (Could not find a <code>ios</code> simulator (valid values: com.apple.coresimulator.simruntime.ios-10-3, com.apple.coresimulator.simruntime.ios-12-1, com.apple.coresimulator.simruntime.ios-8-1, com.apple.coresimulator.simruntime.tvos-12-1, com.apple.coresimulator.simruntime.watchos-5-1). Ensure that Xcode -&gt; Window -&gt; Devices has at least one <code>ios</code> simulator listed or otherwise add one.</h3><p>找不到对应的模拟器,需要升级cocoapods<code>sudo gem install cocoapods</code></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://www.jianshu.com/p/5f6d02cf0a31" target="_blank" rel="noopener">制作Github上的开源库</a><br><a href="https://www.jianshu.com/p/8573d1e8193c" target="_blank" rel="noopener">Cocoapods创建公开库和私有库</a><br><a href="https://www.jianshu.com/p/1f70f1176727" target="_blank" rel="noopener">cocoapods系列教程—让自己的开源框架支持cocoapods</a></p>
 
       
     </div>
@@ -491,7 +473,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Intent/" rel="tag"># Intent</a>
+            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
           
         </div>
       
@@ -504,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/08/Activity/" rel="next" title="Activity">
-                <i class="fa fa-chevron-left"></i> Activity
+              <a href="/2019/04/22/隐私政策/" rel="next" title="隐私政策">
+                <i class="fa fa-chevron-left"></i> 隐私政策
               </a>
             
           </div>
@@ -513,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/21/广播接收器/" rel="prev" title="广播接收器">
-                广播接收器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -665,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#显式Intent"><span class="nav-number">1.</span> <span class="nav-text">显式Intent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式Intent"><span class="nav-number">2.</span> <span class="nav-text">隐式Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发送隐式Intent"><span class="nav-number">2.1.</span> <span class="nav-text">发送隐式Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收隐式Intent"><span class="nav-number">2.2.</span> <span class="nav-text">接收隐式Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent过滤器-IntentFilter"><span class="nav-number">2.3.</span> <span class="nav-text">Intent过滤器 - IntentFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过URL打开app"><span class="nav-number">2.4.</span> <span class="nav-text">通过URL打开app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式Intent的使用技巧"><span class="nav-number">2.5.</span> <span class="nav-text">隐式Intent的使用技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">2.6.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式-Intent-如何通过系统传递以启动其他-Activity-的"><span class="nav-number">3.</span> <span class="nav-text">隐式 Intent 如何通过系统传递以启动其他 Activity 的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考网址"><span class="nav-number">4.</span> <span class="nav-text">参考网址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#制作github仓库"><span class="nav-number">1.</span> <span class="nav-text">制作github仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持cocoapods"><span class="nav-number">2.</span> <span class="nav-text">支持cocoapods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建spec文件"><span class="nav-number">2.1.</span> <span class="nav-text">创建spec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑spec文件"><span class="nav-number">2.2.</span> <span class="nav-text">编辑spec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建tag"><span class="nav-number">2.3.</span> <span class="nav-text">创建tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册cocoapods账号"><span class="nav-number">2.4.</span> <span class="nav-text">注册cocoapods账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看注册信息"><span class="nav-number">2.5.</span> <span class="nav-text">查看注册信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测podspec文件"><span class="nav-number">2.6.</span> <span class="nav-text">检测podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传到cocoapods仓库"><span class="nav-number">2.7.</span> <span class="nav-text">上传到cocoapods仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索新建的库"><span class="nav-number">2.8.</span> <span class="nav-text">搜索新建的库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能出现的问题"><span class="nav-number">3.</span> <span class="nav-text">可能出现的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-找不到自己创建的库"><span class="nav-number">3.1.</span> <span class="nav-text">1、 找不到自己创建的库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、ERROR-iOS-unknown-Encountered-an-unknown-error-Could-not-find-a-ios-simulator-valid-values-com-apple-coresimulator-simruntime-ios-10-3-com-apple-coresimulator-simruntime-ios-12-1-com-apple-coresimulator-simruntime-ios-8-1-com-apple-coresimulator-simruntime-tvos-12-1-com-apple-coresimulator-simruntime-watchos-5-1-Ensure-that-Xcode-gt-Window-gt-Devices-has-at-least-one-ios-simulator-listed-or-otherwise-add-one"><span class="nav-number">3.2.</span> <span class="nav-text">2、ERROR | [iOS] unknown: Encountered an unknown error (Could not find a ios simulator (valid values: com.apple.coresimulator.simruntime.ios-10-3, com.apple.coresimulator.simruntime.ios-12-1, com.apple.coresimulator.simruntime.ios-8-1, com.apple.coresimulator.simruntime.tvos-12-1, com.apple.coresimulator.simruntime.watchos-5-1). Ensure that Xcode -&gt; Window -&gt; Devices has at least one ios simulator listed or otherwise add one.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">4.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>

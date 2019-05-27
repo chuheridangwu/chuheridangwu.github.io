@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="奔跑的小卖铺">
 <meta property="og:description" content="初始化123456git init                    //初始化仓库git add README.md           //添加描述文件git add .                   //添加新增文件 .为添加所有新增文件，添加具体某个文件可以将.换为文件名git commit -m“第一次提交”    //提交到本地 &amp;quot;&amp;quot;里为描述git rem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-22T06:10:25.872Z">
+<meta property="og:updated_time" content="2019-05-21T11:27:53.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git基础命令">
 <meta name="twitter:description" content="初始化123456git init                    //初始化仓库git add README.md           //添加描述文件git add .                   //添加新增文件 .为添加所有新增文件，添加具体某个文件可以将.换为文件名git commit -m“第一次提交”    //提交到本地 &amp;quot;&amp;quot;里为描述git rem">
@@ -421,6 +421,8 @@
 <h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git tag         //查看标签     </span><br><span class="line">git tag v1.0    //创建标签，v1.0: 标签名称</span><br><span class="line">git tag v0.9 b957a5f    // 在对应的的版本打标签  b957a5f:提交过的版本号</span><br><span class="line">git show v0.9   //查看标签信息</span><br><span class="line">git tag -d v0.1 //删除本地标签</span><br><span class="line">git push origin :refs/tags/v0.9 //删除远程仓库的标签，如果标签已经推送到远程仓库需要用此命令</span><br><span class="line">git push origin --tags  //一次推送所有尚未推送到远程的本地标签</span><br></pre></td></tr></table></figure>
 <h3 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h3><p>系统自动生成的文件或者你觉得不需要上传的文件，可以使用.gitignore文件进行忽略，github上面有对应的忽略配置<a href="https://github.com/github/gitignore" target="_blank" rel="noopener">点此查看</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore    //创建.gitigonre文件</span><br><span class="line">vim .gitignore      //编辑，直接将上面配置好的忽略文件copy过来就可以了</span><br></pre></td></tr></table></figure>
+<h3 id="下载被限制速度"><a href="#下载被限制速度" class="headerlink" title="下载被限制速度"></a>下载被限制速度</h3><p>用 git 内置代理，直接走系统中运行的代理工具中转，比如，你的 SS 本地端口是 1080（一般port均为1080），那么可以如下方式走代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
 <h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><strong><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="noopener">廖雪峰的Git教程</a></strong> <em>如果想全面了解Git，强烈推荐去看一下廖老师的教程</em></p>
 <p><strong><a href="https://www.yiibai.com/git/" target="_blank" rel="noopener">易百Git教程</a></strong></p>
 
@@ -586,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -651,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本及回退"><span class="nav-number">2.</span> <span class="nav-text">查看版本及回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">3.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-number">4.</span> <span class="nav-text">文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签管理"><span class="nav-number">5.</span> <span class="nav-text">标签管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略文件"><span class="nav-number">6.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考网站"><span class="nav-number">7.</span> <span class="nav-text">参考网站</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本及回退"><span class="nav-number">2.</span> <span class="nav-text">查看版本及回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">3.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件管理"><span class="nav-number">4.</span> <span class="nav-text">文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签管理"><span class="nav-number">5.</span> <span class="nav-text">标签管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略文件"><span class="nav-number">6.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载被限制速度"><span class="nav-number">7.</span> <span class="nav-text">下载被限制速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考网站"><span class="nav-number">8.</span> <span class="nav-text">参考网站</span></a></li></ol></div>
             
 
           </div>
