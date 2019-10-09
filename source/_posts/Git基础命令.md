@@ -15,12 +15,13 @@ git commit -m“第一次提交”    //提交到本地 ""里为描述
 git remote add origin https://github.com/chuheridangwu/new.git  //添加远程仓库地址
 git push -u origin master   //推送到远程仓库 master:分支名称master一般为主分支
 ```
+
+<!---more--->
+
 ### 查看版本及回退
 Git保存的是每一次的修改记录
 `git add`:将当前修改添加到暂存区，
 `git commit`:将暂存区的所有内容提交到当前分支
-
-<!---more--->
 
 ```
 git status  //查看当前状态
