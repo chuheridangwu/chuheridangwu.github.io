@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  代理扩展使用代理123extension ViewController: UITextFieldDelegate&amp;#123;&amp;#125; swift 和oc之间的交互swift和oc中可以互相">
+<meta name="description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  常见错误Expected expression after operator代码中有使用 index++  需要更改为index += 1 如何对浮点数进行取余（取模）123let value">
 <meta name="keywords" content="swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swift基础用法">
 <meta property="og:url" content="/2019/04/16/swift基础用法/index.html">
 <meta property="og:site_name" content="奔跑的小卖铺">
-<meta property="og:description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  代理扩展使用代理123extension ViewController: UITextFieldDelegate&amp;#123;&amp;#125; swift 和oc之间的交互swift和oc中可以互相">
+<meta property="og:description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  常见错误Expected expression after operator代码中有使用 index++  需要更改为index += 1 如何对浮点数进行取余（取模）123let value">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-27T08:38:14.158Z">
+<meta property="og:updated_time" content="2019-06-20T03:34:59.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swift基础用法">
-<meta name="twitter:description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  代理扩展使用代理123extension ViewController: UITextFieldDelegate&amp;#123;&amp;#125; swift 和oc之间的交互swift和oc中可以互相">
+<meta name="twitter:description" content="标签在编程过程中需要用到的一些备注，或者说明，使用MARK TODO FIXME （必须大写）  // MARK: 说明文字 // TODO: 需要提醒的文字 // FIXME: 需要修改bug的相关说明  常见错误Expected expression after operator代码中有使用 index++  需要更改为index += 1 如何对浮点数进行取余（取模）123let value">
 
 
 
@@ -411,6 +411,8 @@
 <li>// TODO: 需要提醒的文字</li>
 <li>// FIXME: 需要修改bug的相关说明</li>
 </ul>
+<h2 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h2><h3 id="Expected-expression-after-operator"><a href="#Expected-expression-after-operator" class="headerlink" title="Expected expression after operator"></a>Expected expression after operator</h3><p>代码中有使用 index++  需要更改为index += 1</p>
+<h3 id="如何对浮点数进行取余（取模）"><a href="#如何对浮点数进行取余（取模）" class="headerlink" title="如何对浮点数进行取余（取模）"></a>如何对浮点数进行取余（取模）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let value1 = 5.5</span><br><span class="line">let value2 = 2.2</span><br><span class="line">let result = value1.truncatingRemainder(dividingBy: value2)</span><br></pre></td></tr></table></figure>
 <h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><h2 id="扩展使用代理"><a href="#扩展使用代理" class="headerlink" title="扩展使用代理"></a>扩展使用代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extension ViewController: UITextFieldDelegate&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="swift-和oc之间的交互"><a href="#swift-和oc之间的交互" class="headerlink" title="swift 和oc之间的交互"></a>swift 和oc之间的交互</h1><p>swift和oc中可以互相调用，需要用到 MyGame-bridging-Header.h文件，MyGame是项目名称，swift中需要的头文件在里面导入。<br>链接文件有两种创建方式，一种是系统自动创建，一种手动创建，手动新建.h文件，名称改成 项目名<code>-brifging-Header.h ,Bunild Setting -&gt; Objective Bridging Header</code> 填入本地路径 <code>$(SRCROOT)/MyGame/MyGame-bridging-Header.h, $(SRCROOT)</code>代表本地项目路径。</p>
 
@@ -576,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -587,7 +589,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -641,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">1.</span> <span class="nav-text">标签</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#代理"><span class="nav-number"></span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展使用代理"><span class="nav-number">1.</span> <span class="nav-text">扩展使用代理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swift-和oc之间的交互"><span class="nav-number"></span> <span class="nav-text">swift 和oc之间的交互</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">1.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见错误"><span class="nav-number">2.</span> <span class="nav-text">常见错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Expected-expression-after-operator"><span class="nav-number">2.1.</span> <span class="nav-text">Expected expression after operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何对浮点数进行取余（取模）"><span class="nav-number">2.2.</span> <span class="nav-text">如何对浮点数进行取余（取模）</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#代理"><span class="nav-number"></span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展使用代理"><span class="nav-number">1.</span> <span class="nav-text">扩展使用代理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swift-和oc之间的交互"><span class="nav-number"></span> <span class="nav-text">swift 和oc之间的交互</span></a></li></div>
             
 
           </div>
