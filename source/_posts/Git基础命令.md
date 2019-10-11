@@ -74,6 +74,14 @@ touch .gitignore    //创建.gitigonre文件
 vim .gitignore      //编辑，直接将上面配置好的忽略文件copy过来就可以了
 ```
 
+### 下载被限制速度
+用 git 内置代理，直接走系统中运行的代理工具中转，比如，你的 SS 本地端口是 1080（一般port均为1080），那么可以如下方式走代理：
+ 
+```
+git config --global http.proxy socks5://127.0.0.1:1080
+git config --global https.proxy socks5://127.0.0.1:1080
+```
+
 ### 参考网站
 **[廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)** *如果想全面了解Git，强烈推荐去看一下廖老师的教程*
 

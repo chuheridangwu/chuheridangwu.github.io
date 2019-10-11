@@ -604,6 +604,13 @@ calendar:
   maxResults: 250
 
 # Algolia Search
+algolia:
+  applicationID: 'GRK4YIMS5T'
+  apiKey: 'bef014ba7a9af458bd4e3e1367c30259'
+  indexName: 'pandaBoyIndex'
+  adminApiKey: '2681cd20fa2ce45f4cc46b8ed589d590'
+  chunkSize: 5000
+
 algolia_search:
   enable: true
   hits:
