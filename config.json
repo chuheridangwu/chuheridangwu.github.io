@@ -1,10 +1,5 @@
 {   
     "code": "100",
-    "msg": "success",
-    "data": {
-        "giftVer": "4280",
-        "barrage": "100",
-    },
     "version":"1.0.0",
     "name":"MGlobal Photo",
     "app":1,
