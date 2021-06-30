@@ -1,7 +1,5 @@
 {   
     "code": "100",
-    "version":"1.0.0",
-    "name":"MGlobal Photo",
-    "app":1,
-    "isClose":1
+    "version":100,
+    "name":"MGlobal Photo"
 }
